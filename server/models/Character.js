@@ -2,11 +2,27 @@
 const mongoose = require('mongoose')
 
 // noinspection JSValidateTypes
+const techniqueSchema = mongoose.Schema({
+        name: {
+            type: String,
+            required: true
+        },
+        pp: {
+            type: Number,
+            required: true,
+        },
+        power: {
+            type: Number,
+            required: true,
+        }
+    }
+)
+
+// noinspection JSValidateTypes
 const characterSchema = mongoose.Schema({
         name: {
             type: String,
-            required: true,
-            unique: true
+            required: true
         },
         picture: {
             type: String,
@@ -29,7 +45,7 @@ const characterSchema = mongoose.Schema({
             required: true
         },
         techniques: {
-            type: [String],
+            type: [techniqueSchema],
             required: true
         }
     }

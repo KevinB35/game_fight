@@ -22,6 +22,7 @@ const userSchema = mongoose.Schema({
         characters: {
             type: [characterSchema],
             required: false,
+            unique: false
         }
     }, {
         timestamps: true

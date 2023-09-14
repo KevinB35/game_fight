@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {RouterProvider, createBrowserRouter} from "react-router-dom";
+import Login from "./pages/Login";
+import Layout from "./Layout";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import CreateCharacter from "./components/CreateCharacter";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Game from "./pages/Game";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Profile tabProp={"characters"}/>,
+        },
+        {
+            path: "/login",
+            element: <Login/>,
+        },
+        {
+            path: "/register",
+            element: <Register/>,
+        },
+        {
+            path: "/profile",
+            element: <Profile/>,
+        },
+        {
+            path: "/characters/create",
+            element: <CreateCharacter/>,
+        },
+        {
+            path: "/game",
+            element: <Game/>,
+        },
+    ]);
+
+    return (
+        <Layout>
+            <RouterProvider router={router}/>
+        </Layout>
+    );
 }
 
 export default App;
